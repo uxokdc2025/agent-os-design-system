@@ -1,0 +1,246 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────
+   Agent OS Design System — Semantic design tokens
+   Eight brand themes × light/dark modes + base semantic layer
+   ───────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Midnight Aubergine palette (default theme) */
+  --bg-deep:    #15101a;
+  --bg-mid:     #1c1622;
+  --bg-card:    #251d2c;
+  --bg-elev:    #2e2436;
+
+  --cream:      #f3ebda;
+  --cream-soft: #ddd0bb;
+  --cream-dim:  #a59783;
+  --cream-mute: #6e6353;
+  --cream-mute-strong: #a59783;
+
+  --gold:       #d4a574;
+  --gold-soft:  #e6c69a;
+  --gold-deep:  #a87f54;
+
+  --emerald:    #5ab896;
+  --emerald-dim:#3a8a6e;
+  --plum:       #c4607e;
+  --rust:       #c97c5e;
+
+  --line:       rgba(212, 165, 116, 0.20);
+  --line-soft:  rgba(243, 235, 218, 0.08);
+  --line-deep:  rgba(243, 235, 218, 0.04);
+
+  --shadow-1: 0 1px 0 rgba(243, 235, 218, 0.03), 0 8px 24px rgba(0,0,0,0.5);
+  --shadow-2: 0 2px 0 rgba(243, 235, 218, 0.04), 0 20px 60px rgba(0,0,0,0.55);
+
+  /* Backwards-compat aliases — existing components reference these */
+  --bg: var(--bg-deep);
+  --bg-2: var(--bg-mid);
+  --panel: rgba(37, 29, 44, 0.65);
+  --panel-border: var(--line-soft);
+  --panel-border-hot: var(--line);
+  --fg: var(--cream);
+  --fg-dim: var(--cream-soft);
+  --fg-dimmer: var(--cream-dim);
+
+  --accent-cyan: var(--emerald);
+  --accent-violet: var(--gold);
+  --accent-pink: var(--plum);
+  --accent-lime: var(--emerald);
+  --accent-amber: var(--gold);
+  --accent-red: var(--plum);
+
+  --claude: var(--rust);
+  --openclaw: var(--plum);
+  --hermes: var(--gold-soft);
+
+  --grid: rgba(212, 165, 116, 0.04);
+  --glow: 0 0 40px 0;
+
+  /* Tailwind/shadcn compatibility layer */
+  --background: var(--bg-deep);
+  --foreground: var(--cream);
+  --muted: var(--bg-card);
+  --muted-foreground: var(--cream-dim);
+  --popover: var(--bg-card);
+  --popover-foreground: var(--cream);
+  --card: var(--bg-card);
+  --card-foreground: var(--cream);
+  --border: var(--line-soft);
+  --input: var(--bg-card);
+  --primary: var(--gold);
+  --primary-foreground: var(--bg-deep);
+  --secondary: var(--bg-elev);
+  --secondary-foreground: var(--cream);
+  --accent: var(--bg-elev);
+  --accent-foreground: var(--cream);
+  --destructive: var(--plum);
+  --destructive-foreground: var(--cream);
+  --ring: var(--gold);
+  --radius: 0.5rem;
+}
+
+/* Brand theme variants */
+[data-design-system="together"] {
+  --bg-deep: #10131a; --bg-mid: #171b24; --bg-card: #202735; --bg-elev: #293344;
+  --cream: #f4f7fb; --cream-soft: #c8d2e1; --cream-dim: #8290a6; --cream-mute: #5c687b; --cream-mute-strong: #c8d2e1;
+  --gold: #67e8f9; --gold-soft: #a5f3fc; --gold-deep: #22a8c0; --emerald: #7dd3fc; --plum: #a78bfa; --rust: #fb7185;
+  --line: rgba(103,232,249,.2); --line-soft: rgba(226,232,240,.1); --line-deep: rgba(226,232,240,.05);
+}
+[data-design-system="airtable"] {
+  --bg-deep: #f7f9fc; --bg-mid: #ffffff; --bg-card: #f1f4f8; --bg-elev: #e4eaf2;
+  --cream: #182230; --cream-soft: #35465b; --cream-dim: #64748b; --cream-mute: #94a3b8; --cream-mute-strong: #475569;
+  --gold: #2563eb; --gold-soft: #60a5fa; --gold-deep: #1d4ed8; --emerald: #059669; --plum: #7c3aed; --rust: #ea580c;
+  --line: rgba(37,99,235,.2); --line-soft: rgba(24,34,48,.12); --line-deep: rgba(24,34,48,.06);
+  --panel: rgba(255,255,255,.96); --panel-border: rgba(24,34,48,.14); --panel-border-hot: rgba(37,99,235,.4);
+  --shadow-1: 0 1px 2px rgba(24,34,48,.06), 0 8px 24px rgba(24,34,48,.08);
+  --shadow-2: 0 2px 4px rgba(24,34,48,.08), 0 20px 60px rgba(24,34,48,.12);
+  --grid: rgba(24,34,48,.05); --glow: 0 0 32px 0;
+}
+[data-design-system="claude"] {
+  --bg-deep: #1a1715; --bg-mid: #241f1c; --bg-card: #302824; --bg-elev: #3c3028;
+  --cream: #f7f1e8; --cream-soft: #ded0bd; --cream-dim: #aa9780; --cream-mute: #796955; --cream-mute-strong: #aa9780;
+  --gold: #e07a50; --gold-soft: #f0a27d; --gold-deep: #b85c39; --emerald: #8fc7a3; --plum: #c98a9d; --rust: #e07a50;
+  --line: rgba(224,122,80,.22); --line-soft: rgba(247,241,232,.1); --line-deep: rgba(247,241,232,.05);
+}
+[data-design-system="discord"] {
+  --bg-deep: #1e1f22; --bg-mid: #2b2d31; --bg-card: #313338; --bg-elev: #404249;
+  --cream: #f2f3f5; --cream-soft: #dbdee1; --cream-dim: #b5bac1; --cream-mute: #80848e; --cream-mute-strong: #b5bac1;
+  --gold: #5865f2; --gold-soft: #7983f5; --gold-deep: #4752c4; --emerald: #23a559; --plum: #eb459e; --rust: #f23f42;
+  --line: rgba(88,101,242,.25); --line-soft: rgba(242,243,245,.1); --line-deep: rgba(242,243,245,.05);
+}
+[data-design-system="elevenlabs"] {
+  --bg-deep: #0b0b0b; --bg-mid: #131313; --bg-card: #1d1d1d; --bg-elev: #292929;
+  --cream: #f5f5f5; --cream-soft: #c9c9c9; --cream-dim: #8f8f8f; --cream-mute: #5f5f5f; --cream-mute-strong: #c9c9c9;
+  --gold: #f97316; --gold-soft: #fb923c; --gold-deep: #c2410c; --emerald: #84cc16; --plum: #d946ef; --rust: #ef4444;
+  --line: rgba(249,115,22,.22); --line-soft: rgba(245,245,245,.1); --line-deep: rgba(245,245,245,.05);
+}
+[data-design-system="ibm"] {
+  --bg-deep: #101820; --bg-mid: #18232d; --bg-card: #1f2e3b; --bg-elev: #2a3b4a;
+  --cream: #f4f7fb; --cream-soft: #c7d4e3; --cream-dim: #8da2b8; --cream-mute: #60778e; --cream-mute-strong: #c7d4e3;
+  --gold: #78a9ff; --gold-soft: #a6c8ff; --gold-deep: #4589ff; --emerald: #42be65; --plum: #be95ff; --rust: #fa4d56;
+  --line: rgba(120,169,255,.22); --line-soft: rgba(244,247,251,.1); --line-deep: rgba(244,247,251,.05);
+}
+[data-design-system="meta"] {
+  --bg-deep: #0b1020; --bg-mid: #121a31; --bg-card: #1a2542; --bg-elev: #243256;
+  --cream: #f4f7ff; --cream-soft: #c9d4f0; --cream-dim: #8fa1c8; --cream-mute: #64769f; --cream-mute-strong: #c9d4f0;
+  --gold: #60a5fa; --gold-soft: #93c5fd; --gold-deep: #2563eb; --emerald: #34d399; --plum: #a78bfa; --rust: #f472b6;
+  --line: rgba(96,165,250,.22); --line-soft: rgba(244,247,255,.1); --line-deep: rgba(244,247,255,.05);
+}
+
+/* Light mode variants for all themes */
+[data-color-mode="light"] {
+  --bg-deep: #f7f8fb; --bg-mid: #ffffff; --bg-card: #f1f4f8; --bg-elev: #e7ebf2;
+  --cream: #182230; --cream-soft: #35465b; --cream-dim: #64748b; --cream-mute: #8290a6; --cream-mute-strong: #475569;
+  --panel: rgba(255,255,255,.96); --panel-border: rgba(24,34,48,.14); --panel-border-hot: rgba(37,99,235,.4);
+  --line-soft: rgba(24,34,48,.12); --line-deep: rgba(24,34,48,.06);
+  --shadow-1: 0 1px 2px rgba(24,34,48,.06), 0 8px 24px rgba(24,34,48,.08);
+  --shadow-2: 0 2px 4px rgba(24,34,48,.08), 0 20px 60px rgba(24,34,48,.12);
+}
+[data-color-mode="light"][data-design-system="midnight-aubergine"] { --gold: #8b5e34; --gold-soft: #b77945; --gold-deep: #6e4727; --emerald: #047857; --plum: #a21caf; --rust: #c2410c; --line: rgba(139,94,52,.22); }
+[data-color-mode="light"][data-design-system="together"] { --gold: #0369a1; --gold-soft: #0284c7; --gold-deep: #075985; --emerald: #0369a1; --plum: #6d28d9; --rust: #be123c; --line: rgba(3,105,161,.22); }
+[data-color-mode="light"][data-design-system="airtable"] { --gold: #1d4ed8; --gold-soft: #2563eb; --gold-deep: #1e40af; --emerald: #047857; --plum: #6d28d9; --rust: #c2410c; }
+[data-color-mode="light"][data-design-system="claude"] { --gold: #b45309; --gold-soft: #c2410c; --gold-deep: #92400e; --emerald: #047857; --plum: #9d174d; --rust: #c2410c; --line: rgba(180,83,9,.22); }
+[data-color-mode="light"][data-design-system="discord"] { --gold: #4752c4; --gold-soft: #5865f2; --gold-deep: #3c45a5; --emerald: #047857; --plum: #be185d; --rust: #b91c1c; --line: rgba(71,82,196,.22); }
+[data-color-mode="light"][data-design-system="elevenlabs"] { --gold: #c2410c; --gold-soft: #ea580c; --gold-deep: #9a3412; --emerald: #4d7c0f; --plum: #a21caf; --rust: #b91c1c; --line: rgba(194,65,12,.22); }
+[data-color-mode="light"][data-design-system="ibm"] { --gold: #0f62fe; --gold-soft: #4589ff; --gold-deep: #0043ce; --emerald: #198038; --plum: #6929c4; --rust: #da1e28; --line: rgba(15,98,254,.22); }
+[data-color-mode="light"][data-design-system="meta"] { --gold: #1d4ed8; --gold-soft: #2563eb; --gold-deep: #1e40af; --emerald: #047857; --plum: #6d28d9; --rust: #be185d; --line: rgba(29,78,216,.22); }
+
+html, body {
+  background: var(--bg-deep);
+  color: var(--cream);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: var(--bg-deep);
+  min-height: 100vh;
+  position: relative;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  color: var(--cream);
+}
+
+/* Keyboard focus — theme-aware ring on interactive controls */
+:where(a, button, [role="button"], [role="tab"], [role="link"], summary,
+  input, textarea, select, [tabindex]):focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Eyebrow pattern */
+.eyebrow {
+  display: inline-flex; 
+  align-items: center; 
+  gap: 14px;
+  color: var(--cream-dim); 
+  margin-bottom: 18px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+.eyebrow .num {
+  font-size: 1.4rem; 
+  color: var(--gold); 
+  line-height: 0.9;
+  font-style: italic;
+}
+.eyebrow .line {
+  width: 32px; 
+  height: 1px; 
+  background: var(--gold); 
+  opacity: 0.6;
+}
+
+.page-title {
+  font-weight: 600; 
+  font-size: clamp(1.7rem, 4.5vw, 3.4rem);
+  line-height: 1.05; 
+  letter-spacing: -0.03em; 
+  color: var(--cream);
+  margin: 0;
+}
+
+.page-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.page-subtitle {
+  font-weight: 400;
+  font-size: 1rem; 
+  color: var(--cream-dim); 
+  margin-top: 12px; 
+  line-height: 1.55;
+  max-width: 720px;
+}
+
+/* Surface cards */
+.surface-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line-soft);
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: var(--shadow-1);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+}
+
+.surface-card:hover {
+  border-color: var(--line);
+  background: var(--bg-elev);
+  transform: translateY(-2px);
+}
